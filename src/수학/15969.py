@@ -1,0 +1,5 @@
+int(input())
+students = list(map(int, input().split()))
+max = max(students)
+min = min(students)
+print(max-min)

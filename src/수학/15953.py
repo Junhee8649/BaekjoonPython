@@ -1,5 +1,7 @@
 a_list = {
     1: 5000000,
+    # dict.fromkeys(keys, value) 함수는 주어진 키들을 모두 동일한 값으로 매핑하는 새 딕셔너리를 생성
+    # **는 딕셔너리 언패킹(unpacking) 연산자
     **dict.fromkeys(range(2, 4), 3000000),
     **dict.fromkeys(range(4, 7), 2000000),
     **dict.fromkeys(range(7, 11), 500000),

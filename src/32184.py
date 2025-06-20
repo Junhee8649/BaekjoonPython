@@ -12,9 +12,6 @@ if B % 2 == 1:
     count += 1
     B -= 1
 
-# 이제 A는 홀수, B는 짝수 (또는 A > B)
-# 남은 구간은 모두 완전한 면들이므로 가로로 촬영
-if A <= B:
-    count += (B - A + 1) // 2
+count += (B - A + 1) // 2
 
 print(count)

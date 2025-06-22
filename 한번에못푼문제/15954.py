@@ -1,3 +1,4 @@
+# 카카오 코테 정밀도 고려, 누적합 사용, 분산 공식 사용
 from math import sqrt
 from decimal import Decimal, getcontext
 

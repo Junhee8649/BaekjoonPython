@@ -1,3 +1,4 @@
+# 브루트포스 문제
 def max_cherry_group_sum(N, A):
     max_sum = 0
     

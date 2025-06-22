@@ -1,3 +1,4 @@
+# dp와 이항계수
 n, k = map(int, input().split())
 mod = 10007
 

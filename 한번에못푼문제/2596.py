@@ -1,3 +1,4 @@
+# 각 비트 자리 차이에 대한 문제
 def decode_message(message, char_count):
     # 각 문자의 인코딩 값
     valid_codes = {

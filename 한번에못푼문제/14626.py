@@ -1,3 +1,4 @@
+# 나머지연산을 이용하는 브루트포스 문제
 ISBN = input()
 sum = 0
 index = 0

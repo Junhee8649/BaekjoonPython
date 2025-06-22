@@ -1,3 +1,4 @@
+# itertools 조합 사용
 from itertools import combinations
 
 N = int(input())

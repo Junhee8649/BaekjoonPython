@@ -1,8 +1,8 @@
-from itertools import permutations
+from itertools import product
 
 N, M = map(int, input().split())
 num_list = list(map(int, input().split()))
-comb = permutations(num_list, M)
+comb = product(num_list, repeat=M)
 sort_list = []
 
 for num in comb:

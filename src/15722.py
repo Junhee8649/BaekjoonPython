@@ -4,10 +4,10 @@ count = 1
 minus = False
 x, y = 0, 0
 
-while time < n:  # <= 대신 < 사용
+while time < n:  
     if x == y:
         for _ in range(count):
-            if time >= n:  # 움직이기 전에 먼저 체크
+            if time == n: 
                 break
             if minus:
                 y -= 1
@@ -16,7 +16,7 @@ while time < n:  # <= 대신 < 사용
             time += 1
     else:
         for _ in range(count):
-            if time >= n:  # 움직이기 전에 먼저 체크
+            if time == n:  
                 break
             if minus:
                 x -= 1

@@ -1,3 +1,6 @@
+import sys
+
+input = sys.stdin.readline
 N = int(input())
 people = 0
 for _ in range(N):

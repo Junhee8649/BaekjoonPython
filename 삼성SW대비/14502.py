@@ -41,7 +41,7 @@ def dfs(depth, start):
         temp = [row[:] for row in grid]
         count = bfs(temp)
         answer = max(answer, count)
-        return answer
+        return 
     for i in range(start, N * M):
         y = i // M
         x = i % M

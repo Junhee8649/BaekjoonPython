@@ -8,55 +8,37 @@ visited = [[False] * N for _ in range(N)]
 
 # student는 학생 한 명의 번호와 좋아하는 학생의 번호 묶음 리스트
 def seating(student):
-    like_grid = [[0] * N for _ in range(N)]
     like_students = student[1:]
+    candidates = [] # 후보 칸들을 담을 리스트
+    
     for i in range(N):
         for j in range(N):
             if visited[i][j] == True:
                 continue
+            
+            # 현재 칸(i, j) 기준 좋아하는 학생 수와 빈 칸 수 카운트
+            like_count = 0
+            zero_count = 0
             for d in range(4):
                 ny, nx = i + dy[d], j + dx[d]
                 if 0 <= ny < N and 0 <= nx < N:
                     if students[ny][nx] in like_students:
-                        like_grid[i][j] += 1
-    max_count = max(max(temp) for temp in like_grid)
-    like_max_students = []
-    for i in range(N):
-        for j in range(N):
-            if like_grid[i][j] == max_count and not visited[i][j]:
-                like_max_students.append([i,j])
-    if len(like_max_students) == 1:
-        y, x = like_max_students[0][0], like_max_students[0][1]
-        students[y][x] = student[0]
-        visited[y][x] = True
-    # 2번 조건 시작
-    else:
-        zero_grid = []
-        for i in like_max_students:
-            zero_count = 0
-            # if visited[i[0]][i[1]] == True:
-            #     continue
-            for d in range(4):
-                ny, nx = i[0] + dy[d], i[1] + dx[d]
-                if 0 <= ny < N and 0 <= nx < N:
+                        like_count += 1
                     if students[ny][nx] == 0:
                         zero_count += 1
-            zero_grid.append(zero_count)
-        max_zero_count = max(zero_grid)
-        zero_max_stdents = []
-        for i in range(len(zero_grid)):
-            if zero_grid[i] == max_zero_count:
-                zero_max_stdents.append(like_max_students[i])
-        if len(zero_max_stdents) == 1:
-            y, x = zero_max_stdents[0][0], zero_max_stdents[0][1]
-            students[y][x] = student[0]
-            visited[y][x] = True
-        # 3번 조건 시작
-        else:
-            zero_max_stdents.sort(key=lambda x: (x[0], x[1]))
-            y, x = zero_max_stdents[0][0], zero_max_stdents[0][1]
-            students[y][x] = student[0]
-            visited[y][x] = True
+            
+            # 조건 1, 2, 3을 튜플로 한 번에 묶어서 후보에 추가
+            # 내림차순(가장 많은 것 우선)을 위해 count 앞에는 마이너스(-)를 붙임
+            candidates.append((-like_count, -zero_count, i, j))
+            
+    # 튜플 정렬 (1순위: -like_count, 2순위: -zero_count, 3순위: i 오름차순, 4순위: j 오름차순)
+    candidates.sort()
+    
+    # 정렬된 리스트의 0번째가 가장 우선순위가 높은 칸
+    y, x = candidates[0][2], candidates[0][3]
+    students[y][x] = student[0]
+    visited[y][x] = True
+
 def happy():
     happy_sum = 0
     for i in range(N):
